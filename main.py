@@ -71,7 +71,7 @@ corrected_key
 
 corrected_key == alice_raw_key
 
-
+print(f"KEY: {corrected_key}")
 
 
 

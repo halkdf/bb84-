@@ -36,8 +36,12 @@ while len(alice_raw_key) < ERROR_CORRECTION_CHUNK_SIZE:
 alice_raw_key = alice_raw_key[:12] 
 alice_raw_key
 
+print(f'Alice_raw_key: {alice_raw_key}')
+
 bob_raw_key = bob_raw_key[:12] 
 bob_raw_key
+
+print(f'Bob_raw_key: {bob_raw_key}')
 
 error_correcting_code = GolayCode()
 generator_matrix = error_correcting_code.get_generator_matrix()
@@ -62,7 +66,7 @@ print(f"Second syndrome: {syndrome_BB}")
 
 if syndrome_BB.sum() < 4:
     correction_mask = np.concatenate((syndrome_BB, np.zeros(12,)))
-    print(correction_mask)
+    print(f'correction_mask: {correction_mask}')
 else:
     print("Decoding failed - more than 3 errors")
 
@@ -72,6 +76,7 @@ corrected_key
 corrected_key == alice_raw_key
 
 print(f"KEY: {corrected_key}")
+
 
 
 
